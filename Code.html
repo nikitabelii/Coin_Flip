@@ -43,6 +43,10 @@
     <button id="tailsButton">Tails</button>
     <p id="result"></p>
 
+    <!-- Image elements for displaying Heads and Tails images -->
+    <img id="headsImage" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/quarter-heads-gregory-gendusa.jpg" alt="Heads Image" style="display: none;">
+    <img id="tailsImage" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/quarter-tails-gregory-gendusa.jpg" alt="Tails Image" style="display: none;">
+
     <script>
         document.getElementById('headsButton').addEventListener('click', () => playGame('Heads'));
         document.getElementById('tailsButton').addEventListener('click', () => playGame('Tails'));
@@ -53,13 +57,31 @@
             const coinResult = coinOptions[randomIndex];
 
             const resultMessage = document.getElementById('result');
+            const headsImage = document.getElementById('headsImage');
+            const tailsImage = document.getElementById('tailsImage');
 
             if (userChoice === coinResult) {
                 resultMessage.textContent = `You chose ${userChoice}. The coin landed on ${coinResult}. You win!`;
                 resultMessage.style.color = 'green';
+                
+                if (coinResult === 'Heads') {
+                    headsImage.style.display = 'block'; // Show Heads image
+                    tailsImage.style.display = 'none';  // Hide Tails image
+                } else {
+                    headsImage.style.display = 'none';  // Hide Heads image
+                    tailsImage.style.display = 'block'; // Show Tails image
+                }
             } else {
                 resultMessage.textContent = `You chose ${userChoice}. The coin landed on ${coinResult}. You lose.`;
                 resultMessage.style.color = 'red';
+                
+                if (coinResult === 'Heads') {
+                    headsImage.style.display = 'block'; // Show Heads image
+                    tailsImage.style.display = 'none';  // Hide Tails image
+                } else {
+                    headsImage.style.display = 'none';  // Hide Heads image
+                    tailsImage.style.display = 'block'; // Show Tails image
+                }
             }
         }
     </script>
