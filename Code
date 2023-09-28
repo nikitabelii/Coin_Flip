@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <title>Coin Flip Game</title>
+</head>
+<body>
+    <h1>Coin Flip Game</h1>
+    <p>Choose Heads or Tails:</p>
+    <button id="headsButton">Heads</button>
+    <button id="tailsButton">Tails</button>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('headsButton').addEventListener('click', () => playGame('Heads'));
+        document.getElementById('tailsButton').addEventListener('click', () => playGame('Tails'));
+
+        function playGame(userChoice) {
+            const coinOptions = ['Heads', 'Tails'];
+            const randomIndex = Math.floor(Math.random() * 2);
+            const coinResult = coinOptions[randomIndex];
+
+            const resultMessage = document.getElementById('result');
+
+            if (userChoice === coinResult) {
+                resultMessage.textContent = `You chose ${userChoice}. The coin landed on ${coinResult}. You win!`;
+                resultMessage.style.color = 'green';
+            } else {
+                resultMessage.textContent = `You chose ${userChoice}. The coin landed on ${coinResult}. You lose.`;
+                resultMessage.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
